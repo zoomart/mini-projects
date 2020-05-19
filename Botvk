@@ -1,0 +1,34 @@
+#bot
+from vk_api.longpoll import VkLongPoll, VkEventType
+import random, vk_api
+
+def otvet():
+	b = ["привет","здравствуй"]#Приветсвие
+	x = ""
+	с = ""
+	while True:
+		a = event.text
+		a = a.lower()
+		for x in b:
+			if a == x:
+				c = str(random.choice(b))
+				с.capitalize()
+				print("Ответ пользователю" + c)
+				break			
+
+def write_msg(user_id, message):
+	random_id = vk_api.utils.get_random_id()
+	vk.method("message.send",{"user_id": user_id, "message" : message,'random_id' : random_id})
+
+def main():
+	token = "628308fdfa3645c75e4076a61e8baab221c6b95cbcc6c07635f9854c27923600de706e2ed9ec41b2a1579"
+	vk_session = vk_api.VkApi(token = token)#Авторизация через токен
+
+	session_api = vk_session.get_api()
+	longpoll = VkLongPoll(vk_session)
+
+	while True:
+		for event in longpoll.listen():
+			otvetend = otvet(event) 
+			write_msg(event.user_id, otvetend)
+main()
