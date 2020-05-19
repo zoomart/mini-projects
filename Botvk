@@ -21,7 +21,7 @@ def write_msg(user_id, message):
 	vk.method("message.send",{"user_id": user_id, "message" : message,'random_id' : random_id})
 
 def main():
-	token = "628308fdfa3645c75e4076a61e8baab221c6b95cbcc6c07635f9854c27923600de706e2ed9ec41b2a1579"
+	token = ""
 	vk_session = vk_api.VkApi(token = token)#Авторизация через токен
 
 	session_api = vk_session.get_api()
